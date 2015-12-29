@@ -1,5 +1,7 @@
 package com.micles;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -43,8 +45,10 @@ public class Library {
     }
 
 
-
-    public void  save(){
+    public void  save() throws FileNotFoundException {
         fileprocessor.save("Baza", books);
+    }
+    public void load() throws Exception {
+        books = fileprocessor.load("Baza");
     }
 }

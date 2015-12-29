@@ -1,8 +1,7 @@
 package com.micles;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -27,7 +26,22 @@ public class TextFileProcessor implements FileProcessor {
     }
 
     @Override
-    public List<Book> load(String FileName) {
-        return null;
+    public List<Book> load(String fileName) throws IOException {
+        FileReader fileReader = new FileReader(fileName);
+        BufferedReader bufferedReader = new BufferedReader(fileReader);
+        List<Book> books = new ArrayList<>();
+
+        String textLine = bufferedReader.readLine();
+        do{
+            String tmp[] = textLine.split(",");
+            if(tmp[0].equals("B")){
+                books.add(new Book(tmp[1],tmp[2],Integer.parseInt(tmp[3])));
+            }
+            textLine = bufferedReader.readLine();
+        } while(textLine != null);
+
+        bufferedReader.close();
+
+        return books;
     }
 }

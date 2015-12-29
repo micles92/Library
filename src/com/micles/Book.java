@@ -10,6 +10,7 @@ public class Book implements Serializable {
     private String title;
     private String autor;
     private int year;
+    private final static String BOOKID= "B";
 
     public Book(String title, String autor, int year) {
         this.title = title;
@@ -67,7 +68,7 @@ public class Book implements Serializable {
     @Override
     public String toString() {
         String result;
-        result = title + " " + autor + " " + year;
+        result = BOOKID + "," + title + "," + autor + "," + year;
         return result;
     }
 }
