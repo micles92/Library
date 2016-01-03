@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Bolesław on 2015-12-28.
  */
-public interface FileProcessor {
-    void save(String fileName, List<Book>books) throws FileNotFoundException;
-    List<Book> load(String FileName) throws Exception;
+public interface FileProcessor extends DataProcessor {
+//    void save(String fileName, List<Book>books) throws FileNotFoundException;
+//    List<Book> load(String FileName) throws Exception;
 }

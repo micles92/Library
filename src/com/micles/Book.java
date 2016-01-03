@@ -10,12 +10,14 @@ public class Book implements Serializable {
     private String title;
     private String autor;
     private int year;
+    private double price;
     private final static String BOOKID= "B";
 
-    public Book(String title, String autor, int year) {
+    public Book(String title, String autor, int year, double price) {
         this.title = title;
         this.autor = autor;
         this.year = year;
+        this.price = price;
     }
 
 
@@ -43,6 +45,9 @@ public class Book implements Serializable {
         this.year = year;
     }
 
+    public double getPrice() {
+        return price;
+    }
 
     @Override
     public boolean equals(Object o) {

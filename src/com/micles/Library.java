@@ -2,24 +2,47 @@ package com.micles;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
+import java.sql.Connection;
+import java.util.*;
 
 /**
  * Created by Bolesław on 2015-12-28.
  */
 public class Library {
     private   List<Book> books;
-    private FileProcessor fileprocessor;
+    private   Set<User> users;
+    private DataProcessor dataProcessor;
 
 
-    public Library(FileProcessor fileProcessor) {
+
+    public Library(DataProcessor dataProcessor) {
         books = new ArrayList<>();
-        this.fileprocessor = fileProcessor;
+        users = new HashSet<>();
+        this.dataProcessor = dataProcessor;
     }
 
+    public void addUser(User user){
+        users.add(user);
+    }
+
+    public void removeUser(User user){
+        users.remove(user);
+    }
+
+    public void removeUser(String email){
+        Iterator<User> iterator = users.iterator();
+
+        while(iterator.hasNext()){
+            User tmp = iterator.next();
+            if(tmp.getEmail().equals(email)){
+                iterator.remove();
+            }
+        }
+    }
+
+
+
+    //metody ksiazek
     public void addBook(Book book){
         books.add(book);
     }
@@ -41,14 +64,22 @@ public class Library {
     public String toString() {
         return "Library{" +
                 "books=" + books +
+                ", users=" + users +
                 '}';
     }
 
-
-    public void  save() throws FileNotFoundException {
-        fileprocessor.save("Baza", books);
+    public void  saveBook() throws Exception {
+        dataProcessor.saveBook("Baza", books);
     }
-    public void load() throws Exception {
-        books = fileprocessor.load("Baza");
+    public void loadBook() throws Exception {
+        books = dataProcessor.loadBook("Baza");
+    }
+
+    public  void saveUser() throws Exception{
+        dataProcessor.saveUser("Users", users);
+    }
+
+    public void loadUser() throws  Exception{
+        dataProcessor.loadUser("Users");
     }
 }
