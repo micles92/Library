@@ -105,7 +105,7 @@ public class DataBaseProcessor implements DataProcessor {
 
         PreparedStatement statement = connection.prepareStatement("SELECT * FROM users");
         ResultSet result = statement.executeQuery();
-        Set<User> set = new HashSet<>();
+        Set<User> users = new HashSet<>();
 
         while(result.next()){
             Integer id = result.getInt(1);
@@ -113,10 +113,10 @@ public class DataBaseProcessor implements DataProcessor {
             String email = result.getString(3);
             Integer pesel = result.getInt(4);
 
-            set.add(new User(name,email,pesel));
+            users.add(new User(name,email,pesel));
         }
 
 
-        return set;
+        return users;
     }
 }

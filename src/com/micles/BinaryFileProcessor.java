@@ -1,10 +1,7 @@
 package com.micles;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * Created by Michał on 29.12.2015.

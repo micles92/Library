@@ -21,6 +21,12 @@ public class Library {
         this.dataProcessor = dataProcessor;
     }
 
+    public void viewUser(){
+        for(User x: users){
+            System.out.println(x);
+        }
+    }
+
     public void addUser(User user){
         users.add(user);
     }
@@ -43,6 +49,11 @@ public class Library {
 
 
     //metody ksiazek
+    public void viewBook(){
+        for (Book x: books){
+            System.out.println(x);
+        }
+    }
     public void addBook(Book book){
         books.add(book);
     }
